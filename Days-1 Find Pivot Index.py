@@ -18,7 +18,7 @@ The pivot index is 3.
 Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
 Right sum = nums[4] + nums[5] = 5 + 6 = 11
 '''
-
+# first Method
 nums = [1,7,3,6,5,6]
 
 def h(nums):
@@ -33,3 +33,15 @@ def h(nums):
             
     return -1
 h(nums)
+
+# second method
+class Solution(object):
+    def pivotIndex(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        idx = list(filter(lambda x:  sum(nums[:x]) == sum(nums[x+1:]),  range(len(nums))))
+
+            
+        return idx[0] if idx else -1
