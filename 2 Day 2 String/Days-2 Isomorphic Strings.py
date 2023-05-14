@@ -30,19 +30,20 @@ s and t consist of any valid ascii character.
 
 #one Method this method pass 34 text but not all
 
-class Solution(object):
-    def isIsomorphic(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: bool
-        """
-        if len(s) == len(t) and len(set(s)) == len(set(t)):
-            return True
-        else:
-            return False
+# class Solution(object):
+#     def isIsomorphic(self, s, t):
+#         """
+#         :type s: str
+#         :type t: str
+#         :rtype: bool
+#         """
+#         if len(s) == len(t) and len(set(s)) == len(set(t)):
+#             return True
+#         else:
+#             return False
 
 # Second Method  this passed all tests
+
 class Solution(object):
     def isIsomorphic(self, s, t):
         """
@@ -51,21 +52,20 @@ class Solution(object):
         :rtype: bool
         """
         if len(s) != len(t):    
-        return False
+            return False
 
-	s_to_t = {}             
-	t_to_s = {}             
+        s_to_t = {}             
+        t_to_s = {}             
 
-	for i in range(len(s)):
-	print(i,"=")
-	if s[i] in s_to_t and s_to_t[s[i]] != t[i]:
-	    print("yes", s[i], s_to_t,s_to_t[s[i]], t[i])
-	    return False    
-	if t[i] in t_to_s and t_to_s[t[i]] != s[i]:
-	    print("2 yes", t[i],t_to_s,  t_to_s[t[i]],s[i] )
-	    return False   
+        for i in range(len(s)):
+            if s[i] in s_to_t and s_to_t[s[i]] != t[i]:
+                return False    
+            if t[i] in t_to_s and t_to_s[t[i]] != s[i]:
+                return False   
 
-	s_to_t[s[i]] = t[i] 
-	t_to_s[t[i]] = s[i] 
+            s_to_t[s[i]] = t[i] 
+            t_to_s[t[i]] = s[i] 
 
-	return True 
+        return True   
+    
+a = Solution().isIsomorphic(s="foo", t="bar")
