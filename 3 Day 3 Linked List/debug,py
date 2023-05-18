@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon May 15 15:31:07 2023
+
+@author: farid
+"""
+# creating listnode 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+    def __repr__(self):
+        if self.next is None:
+            #f"ListNode{{val: {self.val}, next: None}} "
+            return f"({self.val}),(None)"
+        else:
+            #f"ListNode{{val: {self.val}, next: {repr(self.next)}}}"
+            return f"({self.val}),({repr(self.next)})"
+
+# Creating list1: 1 -> 2 -> 4
+list1 = ListNode(1)
+list1.next = ListNode(2)
+list1.next.next = ListNode(4)
+
+# Creating list2: 1 -> 3 -> 4
+list2 = ListNode(1)
+list2.next = ListNode(3)
+list2.next.next = ListNode(4)
+
+# # Printing list1
+# print(repr(list1))
+
+# # Printing list2
+# print(repr(list2))
+
+
+# you can create listnode also with the below code
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            print("true")
+            self.head = new_node
+        else:
+            print("else")
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+
+# Example usage
+# linked_list = LinkedList()
+# linked_list.append(1)
+# linked_list.print_list()
+# linked_list.append(2)
+# linked_list.print_list()
+# linked_list.append(3)
+# linked_list.print_list()
+# linked_list.append(4)
+# linked_list.print_list()
+
+
+
+
+# merge two sorted list 
+class Solution(object):
+    def mergeTwoLists(self, list1, list2):
+        """
+        :type list1: Optional[ListNode]
+        :type list2: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        #print(list1, )
+       # print(list2, )
+        print("\n")
+        dummy = ListNode(0)
+        tail = dummy
+        s= 1
+        while list1 and list2:
+            if list1.val < list2.val:
+                print("if")
+                print("--tail--",  tail)
+                print( "--tail.next-----  ", tail.next, "\n" )
+                tail.next = list1
+                print("a--tail--",  tail)
+                print( "a--tail.next-----  ", tail.next, "\n\n" )
+                list1 = list1.next
+                # print("-list1--", list1)
+            else:
+                print("else")
+                print("tail---  ", tail)
+                print("--tail.next---", tail.next, "\n\n")
+                tail.next = list2
+                print("a tail---  ", tail)
+                print("a--tail.next---", tail.next, "\n\n")
+                list2 = list2.next
+               
+            tail = tail.next
+            print("loop\n--tail--",  tail, "\n\n") 
+            print("=============================================",s)
+            s+=1
+            print(dummy.next)
+        print("--tail--",  tail, "\n---final\n") 
+        print("vvv ", list1, "ff\n", list2)
+        if list1:
+            print("true")
+            print("===l1== ", tail, "\n", tail.next)
+            tail.next = list1
+        if list2:
+            print("===l2== ", tail, "\n", tail.next)
+            tail.next = list2
+        return dummy.next
+    
+a = Solution().mergeTwoLists(list1, list2)
