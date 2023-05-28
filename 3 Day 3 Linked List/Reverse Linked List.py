@@ -48,7 +48,7 @@ list1 = ListNode(1)
 list1.next = ListNode(2)
 list1.next.next = ListNode(4)
 list1.next.next.next = ListNode(5)
-print(list1)
+# print(list1)
 
 
 
@@ -60,19 +60,73 @@ class Solution(object):
         """
         prev = None
         curr = head
+        print(curr, "\n\n")
         while curr is not None:
             next_node = curr.next
-            print("curr.next   ", curr.next, )
-            print("prev   ", prev, )
+            # print("curr.next  ===> ", curr.next, )
+            # print("prev   ===> ", prev, )
             curr.next = prev
-            print("curr.next   ", curr.next, "curr.val ",curr.val )
+            print("curr.next  xxxxxx>> ", curr.next )
             
             prev = curr
-            print("prev  2 ", prev, )
+            print("prev  //===>  ", prev ,"\n")
             curr = next_node
-            print("next node   ", next_node , "\n curr  ", curr,  )
-            print("\n\n\n\n")
+            # print("next node   ", next_node , "\n curr  ", curr,  )
+            # print("\n\n\n\n")
         return prev
     
     
 a = Solution().reverseList(list1)
+
+
+
+#=================Understand output for insight==================
+'''
+given:
+    
+  list1 or curr =====>    [ (1),(2),(4),(5),(None) ]
+  prev ========>          None
+ 
+
+four steps to reverse listnode:
+    
+==> Step1:    --------------------------------
+next_node = curr.next     -->  [(2),(4),(5),(None) ]
+
+curr.next = prev          --> None
+
+prev = curr               -->  [(1),(None)]
+
+curr = nextnode           --> [(2),(4),(5),(None) ]
+
+==> Step2:-------------------------------------
+next_node = curr.next     -->  [(4),(5),(None) ]
+
+curr.next = prev          --> [(1),(None)]
+
+prev = curr               -->  [(2), (1),(None)]
+
+curr = nextnode           --> [(4),(5),(None) ]
+    
+
+==> Step3:    ------------------------------
+next_node = curr.next     -->  [(5),(None) ]
+
+curr.next = prev          --> [(2),(1),(None)]
+
+prev = curr               -->  [(4), (2), (1),(None)]
+
+curr = nextnode           --> [(5),(None) ]
+
+==> Step4:   -----------------------------
+next_node = curr.next     -->  [(None) ]
+
+curr.next = prev          --> [(4), (2),(1),(None)]
+
+prev = curr               -->  [(5), (4), (2), (1),(None)]
+
+curr = nextnode           --> [(None) ]
+
+
+return prev
+'''
