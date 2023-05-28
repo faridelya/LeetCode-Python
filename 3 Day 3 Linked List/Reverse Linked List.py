@@ -60,14 +60,13 @@ class Solution(object):
         """
         prev = None
         curr = head
-        print(curr, "\n\n")
+        # print(curr, "\n\n")
         while curr is not None:
             next_node = curr.next
             # print("curr.next  ===> ", curr.next, )
             # print("prev   ===> ", prev, )
             curr.next = prev
             print("curr.next  xxxxxx>> ", curr.next )
-            
             prev = curr
             print("prev  //===>  ", prev ,"\n")
             curr = next_node
@@ -77,7 +76,7 @@ class Solution(object):
     
     
 a = Solution().reverseList(list1)
-
+print(a)
 
 
 #=================Understand output for insight==================
